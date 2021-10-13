@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+	<div class="container">
+	
+		<h3>Add/Update Medicine</h3>
+		<hr>
+		
+		<p class="h4 mb-4">Save Medicine</p>
+	
+		<form action="#" th:action="@{/medicines/save}" th:object="${medicine}" method="POST">
+		
+			<input type="hidden" th:field="*{id}" />
+
+			<input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Name">
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+				
+			<button type="submit" class="btn btn-info col-2">Save</button>
+						
+		</form>
+	
+		<hr>
+		<a th:href="@{/patients/med-list}">Medicines List</a>
+	</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

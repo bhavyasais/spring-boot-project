@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	
+</head>
+
+<body>
+
+			
+<div class="container">
+
+	<h3>Medicines Directory</h3>
+	<hr>
+	
+	
+	<form th:action="@{/medicines/search}" class="form-inline">
+	
+		<input class="form-control  ml-5 mr-sm-2 mb-3" type="search" name="medicineName" placeholder="Search by name" />
+
+		<button class="btn btn-success mb-3" type="submit">Search</button>
+		
+    </form>
+
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				
+				<th>Medicine Name</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+      <tr role="row" class="odd" th:each="medicine:${medicines}">
+         <td>
+            <p th:each="patient : ${patients}" th:if="(${patient.id} == ${medicine.id})" th:text="${medicine.name}"></p>
+         </td>
+        
+      </tr>
+   </tbody>
+   
+   
+	</table>
+	
+</div>
+	
+</body>
+</html>
