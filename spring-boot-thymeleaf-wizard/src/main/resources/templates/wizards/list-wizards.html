@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<title>Wizard Directory</title>
+</head>
+
+<body>
+
+			
+<div class="container">
+
+	<h3>Wizard Directory</h3>
+	<hr>
+	
+	<a th:href="@{/wizards/showFormForAdd}" class="btn btn-primary btn-sm mb-3"> Add Wizard </a>
+	
+
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempWizard : ${wizards}">
+			
+				<td th:text="${tempWizard.firstName}" />	
+				<td th:text="${tempWizard.lastName}" />	
+				<td th:text="${tempWizard.email}" />	
+				
+				<td>
+				<div class="row">
+				
+					<div class="col-small">
+
+								<form action="#" th:action="@{/wizards/showFormForUpdate}" method="POST">
+
+
+									<input type="hidden" name="wizardId" th:value="${tempWizard.id}" />
+									<button type="submit" class="btn btn-info btn-sm ml-3 mr-1">Update</button>
+
+								</form>
+							</div>
+					
+					<div class="col-small">				
+					<form action="#" th:action="@{/wizards/delete}" method="POST">
+					
+						<input type="hidden" name="wizardId" th:value="${tempWizard.id}" />						
+						<button type="submit" class="btn btn-danger btn-sm">Delete</button>
+
+					</form>
+					</div>
+				</div>	
+				</td>
+				
+				
+			</tr>
+		</tbody>		
+	</table>
+	<form action="#" th:action="@{/logout}" method="POST">
+	
+		<input type="submit" value="Logout" class="btn btn-outline-primary mt-2" />
+	
+	</form>
+</div>
+	
+</body>
+</html>
+
+
+
